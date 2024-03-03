@@ -21,6 +21,7 @@ import { QuestionSchema } from "@/lib/validations";
 import { useTheme } from "@/context/ThemeProvider";
 import { Badge } from "../ui/badge";
 import Image from "next/image";
+import { createQuestion } from "@/lib/actions/question.action";
 // import { usePathname, useRouter } from "next/navigation";
 
 interface Props {
@@ -55,6 +56,9 @@ export function Question({ type, mongoUserId, questionDetails }: Props) {
   async function onSubmit(values: z.infer<typeof QuestionSchema>) {
     setIsSubmitting(true);
     try {
+
+      await createQuestion({});
+      console.log("question submitted")
       // if(type === 'Edit') {
       //   await editQuestion({
       //     questionId: parsedQuestionDetails._id,
