@@ -12,6 +12,7 @@ export interface IUser extends Document {
   portfolioWebsite?: string;
   reputation?: number;
   saved: Schema.Types.ObjectId[];
+  onboarded: boolean;
   joinedAt: Date;
 }
 
@@ -27,6 +28,7 @@ const UserSchema = new Schema({
   portfolioWebsite: { type: String },
   reputation: { type: Number, default: 0 },
   saved: [{ type: Schema.Types.ObjectId, ref: "Question" }],
+  onboarded: { type: Boolean, default: false },
   joinedAt: { type: Date, default: Date.now },
 });
 
